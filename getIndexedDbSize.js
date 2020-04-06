@@ -22,15 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-(function showIndexedDbSize() {
+function showIndexedDbSize(dbname) {
   "use strict";
   var db;
   var storesizes = new Array();
  
   function openDatabase() {
     return new Promise(function(resolve, reject) {
-      //prompt for DB name
-      var dbname = prompt('Please enter your Database Name', '');
+      //prompt for DB name if no dbname from function call
+      if (dbname) {
+        dbname = prompt('Please enter your Database Name', '');
+      }
 
       if (dbname !== null) {
         var request = window.indexedDB.open(dbname);
@@ -86,4 +88,6 @@ SOFTWARE.
        console.table(storesizes);
     });
   });
-}());
+};
+
+// copy above to console and run. Then just call showIndexedDbSize() in future.
