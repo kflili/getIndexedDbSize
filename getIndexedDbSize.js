@@ -30,7 +30,7 @@ function showIndexedDbSize(dbname) {
   function openDatabase() {
     return new Promise(function(resolve, reject) {
       //prompt for DB name if no dbname from function call
-      if (dbname) {
+      if (!!dbname) {
         dbname = prompt('Please enter your Database Name', '');
       }
 
